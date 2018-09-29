@@ -15,5 +15,8 @@ describe('frequency_set', () => {
     });
     test('average', function () {
        expect(set.getAverage()).toBeCloseTo(4.8666666666667)
+    });
+    test('items', function () {
+        expect(set.getItems()).toEqual([1,1,1,1,1,6,6,7,7,7,7,7,7,7,7])
     })
 });
