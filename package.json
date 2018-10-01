@@ -1,20 +1,21 @@
 {
-  "name": "js",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "turf-stater",
+  "version": "0.0.7",
+  "description": "Do statistics with numerical array",
+  "main": "dist/index.js",
   "scripts": {
     "test": "jest --verbose",
     "test-watch": "jest --verbose --watchAll",
     "dev": "./node_modules/.bin/tsc --watch"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "lefuturiste <contact@lefuturiste.fr>",
+  "license": "MIT",
   "dependencies": {
-    "typescript": "^3.1.1"
+    "@types/node": "^10.11.3"
   },
   "devDependencies": {
+    "typescript": "^3.1.1",
     "@types/jest": "^23.3.2",
     "jest": "^23.6.0",
     "ts-jest": "^23.10.2"

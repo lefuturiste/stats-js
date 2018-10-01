@@ -5,6 +5,7 @@ export default class Set {
     private average: number = 0;
     private averageValuesSquare: number = 0;
     private variance: number = 0;
+    private standardDeviation: number = 0;
 
     constructor(items: number[]) {
         this.items = items;
@@ -118,5 +119,12 @@ export default class Set {
             this.variance = (this.getAverageValuesSquare() / this.getLength()) - (this.getAverage() * this.getAverage())
         }
         return this.variance
+    }
+
+    getStandardDeviation(): number {
+        if (this.standardDeviation === 0) {
+            this.standardDeviation = Math.sqrt(this.getVariance())
+        }
+        return this.standardDeviation;
     }
 };

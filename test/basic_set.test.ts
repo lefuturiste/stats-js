@@ -33,4 +33,7 @@ describe('basic_set', () => {
     test('variance', function () {
         expect(set.getVariance()).toBeCloseTo(10.5306)
     });
+    test('standardDeviation', function () {
+        expect(set.getStandardDeviation()).toBeCloseTo(3.24508859663338)
+    });
 });
