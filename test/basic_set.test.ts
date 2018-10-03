@@ -4,7 +4,8 @@ describe('basic_set', () => {
     let set = new Set([5, 6, 8, 9, 2, 1, 0]);
 
     test('amount', function () {
-        expect(set.getAmount()).toBe(31)
+        expect(set.getAmount()).toBe(31);
+        expect(set.getValuesSum()).toBe(31)
     });
     test('length', function () {
         expect(set.getLength()).toBe(7)
@@ -22,18 +23,22 @@ describe('basic_set', () => {
         expect(set.getThirdQuartile()).toBe(8)
     });
     test('median', function () {
-        expect(set.getMedian()).toBe(5)
+        expect(set.getMedian()).toBe(5);
+        expect(set.getSecondQuartile()).toBe(5)
     });
     test('average', function () {
        expect(set.getAverage()).toBeCloseTo(4.4285714285714)
     });
-    test('averageValuesSquare', function () {
-        expect(set.getAverageValuesSquare()).toBe(211)
+    test('valuesSquareSum', function () {
+        expect(set.getValuesSquareSum()).toBe(211)
     });
     test('variance', function () {
         expect(set.getVariance()).toBeCloseTo(10.5306)
     });
     test('standardDeviation', function () {
         expect(set.getStandardDeviation()).toBeCloseTo(3.24508859663338)
+    });
+    test('hash', function () {
+        expect(set.getHash()).toBe(-1387628007)
     });
 });

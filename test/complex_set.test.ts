@@ -19,13 +19,17 @@ describe('complex_set', () => {
         25,
         20
     ]);
-
+    test('first_decile', function () {
+        expect(set.getFirstDecile()).toBe(6)
+    });
+    test('ninth_decile', function () {
+        expect(set.getNinthDecile()).toBe(91)
+    });
     test('length', function () {
         expect(set.getLength()).toBe(16)
     });
     test('sort', function () {
         set.sortAscending();
-        console.log(set.getItems());
         expect(set.getItems()[0]).toBe(2);
         expect(set.getItems()[1]).toBe(6)
     });

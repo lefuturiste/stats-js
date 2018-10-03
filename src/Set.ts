@@ -14,7 +14,7 @@ export default class Set {
     static fromFrequencySet(frequencySet: number[][]): Set {
         let basicSet: number[] = [];
         frequencySet.forEach((item) => {
-            for (let i=0; i < item[1]; i++){
+            for (let i = 0; i < item[1]; i++) {
                 basicSet.push(item[0])
             }
         });
@@ -28,6 +28,10 @@ export default class Set {
             })
         }
         return this.amount
+    }
+
+    getValuesSum(): number {
+        return this.getAmount()
     }
 
     getLength(): number {
@@ -47,7 +51,7 @@ export default class Set {
     }
 
     sortAscending() {
-        this.items.sort(function(a, b){
+        this.items.sort(function (a, b) {
             return a - b
         });
     }
@@ -74,7 +78,7 @@ export default class Set {
 
     getFirstQuartile(): number {
         this.sortAscending();
-        if (this.isPair()){
+        if (this.isPair()) {
             let nth = this.getLength() / 4;
             return (this.items[nth - 1] + this.items[nth]) / 2;
         } else {
@@ -83,10 +87,14 @@ export default class Set {
         }
     }
 
+    getSecondQuartile(): number {
+        return this.getMedian()
+    }
+
     getThirdQuartile(): number {
         this.sortAscending();
-        if (this.isPair()){
-            let nth = (this.getLength() / 4) * 3 ;
+        if (this.isPair()) {
+            let nth = (this.getLength() / 4) * 3;
             return (this.items[nth - 1] + this.items[nth]) / 2;
         } else {
             let nth = Math.round(this.getLength() / 4);
@@ -97,15 +105,45 @@ export default class Set {
     getMedian(): number {
         this.sortAscending();
         let nth = this.getLength() / 2;
-        if (this.isPair()){
+        if (this.isPair()) {
             return (this.items[nth - 1] + this.items[nth]) / 2;
-        }else{
+        } else {
             nth = Math.round(nth);
             return this.items[nth - 1]
         }
     }
 
-    getAverageValuesSquare(): number {
+    getDecile(level: number): number {
+        this.sortAscending();
+        if (level == 0) {
+            return 0;
+        }
+        let nth = (this.getLength() / 10) * level;
+        return this.items[Math.ceil(nth) - 1]
+    }
+
+    getFirstDecile(): number {
+        return this.getDecile(1)
+    }
+
+    getNinthDecile(): number {
+        return this.getDecile(9)
+    }
+
+    getHash(): number {
+        let str = (this.getAverage() + this.getValuesSquareSum() + this.getLength() + this.getStandardDeviation()).toString();
+        let hash = 0, i, chr;
+        if (str.length === 0) return hash;
+        for (i = 0; i < this.length; i++) {
+            chr   = str.charCodeAt(i);
+            hash  = ((hash << 5) - hash) + chr;
+            hash |= 0;
+        }
+        return hash
+            ;
+    }
+
+    getValuesSquareSum(): number {
         if (this.averageValuesSquare === 0) {
             this.items.forEach((item) => {
                 this.averageValuesSquare += item * item
@@ -116,7 +154,7 @@ export default class Set {
 
     getVariance(): number {
         if (this.variance === 0) {
-            this.variance = (this.getAverageValuesSquare() / this.getLength()) - (this.getAverage() * this.getAverage())
+            this.variance = (this.getValuesSquareSum() / this.getLength()) - (this.getAverage() * this.getAverage())
         }
         return this.variance
     }
