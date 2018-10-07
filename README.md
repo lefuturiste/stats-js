@@ -1,5 +1,9 @@
 # Js statistics bundle
 
+## Installation
+
+`npm install --save turf-stater`
+
 ## Usage
 
 ```
