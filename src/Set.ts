@@ -78,13 +78,8 @@ export default class Set {
 
     getFirstQuartile(): number {
         this.sortAscending();
-        if (this.isPair()) {
-            let nth = this.getLength() / 4;
-            return (this.items[nth - 1] + this.items[nth]) / 2;
-        } else {
-            let nth = Math.round(this.getLength() / 4);
-            return this.items[nth - 1]
-        }
+        let nth = Math.ceil(this.getLength() / 4);
+        return this.items[nth - 1]
     }
 
     getSecondQuartile(): number {
@@ -93,13 +88,8 @@ export default class Set {
 
     getThirdQuartile(): number {
         this.sortAscending();
-        if (this.isPair()) {
-            let nth = (this.getLength() / 4) * 3;
-            return (this.items[nth - 1] + this.items[nth]) / 2;
-        } else {
-            let nth = Math.round(this.getLength() / 4);
-            return this.items[(nth * 3) - 1]
-        }
+        let nth = Math.ceil((this.getLength() / 4) * 3);
+        return this.items[nth - 1]
     }
 
     getMedian(): number {

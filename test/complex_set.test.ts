@@ -19,6 +19,7 @@ describe('complex_set', () => {
         25,
         20
     ]);
+
     test('first_decile', function () {
         expect(set.getFirstDecile()).toBe(6)
     });
@@ -40,13 +41,13 @@ describe('complex_set', () => {
         expect(set.getMax()).toBe(154)
     });
     test('first_quartile', function () {
-        expect(set.getFirstQuartile()).toBe(14)
+        expect(set.getFirstQuartile()).toBe(13)
     });
     test('median', function () {
         expect(set.getMedian()).toBe(30.5)
     });
     test('third_quartile', function () {
-        expect(set.getThirdQuartile()).toBe(54.5)
+        expect(set.getThirdQuartile()).toBe(48)
     });
     test('average', function () {
         expect(set.getAverage()).toBeCloseTo(41.1875)
