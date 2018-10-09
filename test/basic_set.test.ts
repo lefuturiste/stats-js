@@ -41,4 +41,7 @@ describe('basic_set', () => {
     test('hash', function () {
         expect(set.getHash()).toBe(-1387628007)
     });
+    test('extended', function () {
+        expect(set.getExtended()).toBe(9)
+    });
 });

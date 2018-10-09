@@ -155,4 +155,8 @@ export default class Set {
         }
         return this.standardDeviation;
     }
+
+    getExtended(): number {
+        return this.getMax() - this.getMin();
+    }
 };
